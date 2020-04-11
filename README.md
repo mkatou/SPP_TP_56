@@ -1,6 +1,6 @@
 # SPP_TP_56
 
-# ------------------------ WORK STRUCTURING ----------------------
+# --------------- WORK STRUCTURING ---------------
       
 
 The Tp consists of 3 parts, and we have created 6 packages:
