@@ -9,32 +9,32 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class MultiThreaded_ImageFilteringEngine extends SingleThreadedImageFilteringEngine implements BufferedImageTools {
-	private ImageFilteringEngineExe[] workers;
+	private ImageFilteringEngineExe[] engines;
 
-	public MultiThreaded_ImageFilteringEngine(int numberWorkerThread) {
-		this.workers = new ImageFilteringEngineExe[numberWorkerThread];
-		for (int i = 0; i < this.workers.length; i++) {
-			this.workers[i] = new ImageFilteringEngineExe(this);
+	public MultiThreaded_ImageFilteringEngine(int nThread) {
+		this.engines = new ImageFilteringEngineExe[nThread];
+		for (int i = 0; i < this.engines.length; i++) {
+			this.engines[i] = new ImageFilteringEngineExe(this);
 		}
 	}
 
-	public void applyFilter(IFilter someFilter) {
-		ExecutorService es = Executors.newCachedThreadPool();
-		this.outImage = new BufferedImage(this.inImage.getWidth() - 2 * someFilter.getMargin(),
-		this.inImage.getHeight() - 2 * someFilter.getMargin(), BufferedImage.TYPE_INT_RGB);
+	public void applyFilter(IFilter flt) {
+		ExecutorService executor_service = Executors.newCachedThreadPool();
+		this.outImage = new BufferedImage(this.inImage.getWidth() - 2 * flt.getMargin(),
+		this.inImage.getHeight() - 2 * flt.getMargin(), BufferedImage.TYPE_INT_RGB);
 
-		int workerInd = 0;
-		for (int y = someFilter.getMargin(); y < this.inImage.getHeight() - someFilter.getMargin(); y++) {
-			this.workers[workerInd].addWork(someFilter, y);
-			es.execute(this.workers[workerInd]);
-			workerInd++;
-			if (workerInd >= this.workers.length)
-				workerInd = 0;
+		int engine = 0;
+		for (int i_y = flt.getMargin(); i_y < this.inImage.getHeight() - flt.getMargin(); i_y++) {
+			this.engines[engine].addWork(flt, i_y);
+			executor_service.execute(this.engines[engine]);
+			engine++;
+			if (engine >= this.engines.length)
+				engine = 0;
 		}
 
-		es.shutdown();
+		executor_service.shutdown();
 		try {
-			es.awaitTermination(365, TimeUnit.DAYS); // No timeout
+			executor_service.awaitTermination(365, TimeUnit.DAYS); // No timeout
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

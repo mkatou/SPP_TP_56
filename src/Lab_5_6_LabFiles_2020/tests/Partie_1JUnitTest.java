@@ -20,24 +20,24 @@ public class Partie_1JUnitTest {
 	public void testGrayFilter() throws Exception {
 		final String Input_file = "TEST_IMAGES/15226222451_5fd668d81a_c.jpg";
 		final String Output_file = "TEST_IMAGES/p1_test_gray.jpg";
-		final String fileOracle = "TEST_IMAGES/15226222451_5fd668d81a_c_gray.png";
+		final String Oracle_file = "TEST_IMAGES/15226222451_5fd668d81a_c_gray.png";
 		this.Filtering_Engine.loadImage(Input_file);
 		this.Filtering_Engine.applyFilter(new GrayFilter());
 		this.Filtering_Engine.writeOutPngImage(Output_file );
 
-		assertTrue(FilesComparator.sameImageByRGB(fileOracle, Output_file ));
+		assertTrue(FilesComparator.sameImageByRGB(Oracle_file, Output_file ));
 	}
 
 	@Test
 	public void testGaussianFilter() throws Exception {
 		final String Input_file = "TEST_IMAGES/15226222451_5fd668d81a_c.jpg";
 		final String Output_file  = "TEST_IMAGES/p1_test_gaussian_contour.jpg";
-		final String fileOracle = "TEST_IMAGES/15226222451_5fd668d81a_c_gaussian_contour.png";
+		final String Oracle_file = "TEST_IMAGES/15226222451_5fd668d81a_c_gaussian_contour.png";
 		this.Filtering_Engine.loadImage(Input_file);
 		this.Filtering_Engine.applyFilter(new GrayFilter());
 		this.Filtering_Engine.applyFilter(new GaussianContourExtractorFilter());
 		this.Filtering_Engine.writeOutPngImage(Output_file );
-		assertTrue(!FilesComparator.sameImageByRGB(fileOracle, Output_file ));
+		assertTrue(!FilesComparator.sameImageByRGB(Oracle_file, Output_file ));
 	}
 
 }
