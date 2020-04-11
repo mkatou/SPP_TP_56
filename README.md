@@ -39,5 +39,5 @@ The Tp consists of 3 parts, and we have created 6 packages:
       - class Partie_1JUnitTest
       - class Partie_2JUnitTest
 
-Also we have the folder TEST_IMAGES which contains all the test images.
+Also we have the folder "TEST_IMAGES"  which contains all the test images.
 
