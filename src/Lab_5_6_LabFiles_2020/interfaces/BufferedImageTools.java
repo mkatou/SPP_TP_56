@@ -1,4 +1,4 @@
-package Lab_5_6_LabFiles_2020.partie_2;
+package Lab_5_6_LabFiles_2020.interfaces;
 
 import java.awt.image.BufferedImage;
 

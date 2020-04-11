@@ -1,5 +1,6 @@
 package Lab_5_6_LabFiles_2020.partie_2;
 
+import Lab_5_6_LabFiles_2020.interfaces.BufferedImageTools;
 import Lab_5_6_LabFiles_2020.interfaces.IFilter;
 import Lab_5_6_LabFiles_2020.partie_1.SingleThreadedImageFilteringEngine;
 

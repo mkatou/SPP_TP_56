@@ -4,6 +4,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 
+import Lab_5_6_LabFiles_2020.interfaces.BufferedImageTools;
 import Lab_5_6_LabFiles_2020.interfaces.IFilter;
 public class ImageFilteringEngineExe implements Runnable{
 	private BufferedImageTools bufferedImage;
